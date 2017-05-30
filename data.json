@@ -1,0 +1,38 @@
+[
+	{
+		"film": "The Boss Baby",
+		"category": "cartoon",
+		"duration": "1hr 37min",
+		"image": {
+			"url": "images/boss.jpg",
+			"alt": "The Boss Baby"
+		}
+	},
+	{
+		"film": "Smurfs: The Lost Village",
+		"category": "cartoon",
+		"duration": "1hr 30min",
+		"image": {
+			"url": "images/smurfs.jpg",
+			"alt": "Smurfs"
+		}
+	},
+	{
+		"film": "Pirates Of The Caribbean: Dead men tell no tales",
+		"category": "adventure",
+		"duration": "2hr 9min",
+		"image": {
+			"url": "images/pirates.jpg",
+			"alt": "Pirates of the Caribbean"
+		}
+	},
+	{
+		"film": "Guardians Of The Galaxy Vol.2",
+		"category": "adventure",
+		"duration": "1hr 45min",
+		"image": {
+			"url": "images/guardians.jpg",
+			"alt": "Guardians Of The Galaxy Vol.2"
+		}
+	}
+]
