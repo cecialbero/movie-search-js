@@ -1,0 +1,20 @@
+.search-actions {
+	margin: 40px auto;
+}
+
+ul li{
+	background-color: #82c4eb;
+	margin-bottom: 5px;
+	padding: 30px;
+}
+
+ul li img {
+	display: inline-block;
+	margin-right: 30px;
+	width: 150px;
+}
+
+.description {
+	display: inline-block;
+	vertical-align: top;
+}
