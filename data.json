@@ -34,5 +34,14 @@
 			"url": "images/guardians.jpg",
 			"alt": "Guardians Of The Galaxy Vol.2"
 		}
+	},
+	{
+		"film": "Lowriders",
+		"category": "adventure",
+		"duration": "2hr 00min",
+		"image": {
+			"url": "images/lowriders.jpg",
+			"alt": "Lowriders"
+		}
 	}
 ]
