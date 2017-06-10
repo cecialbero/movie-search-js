@@ -2,19 +2,28 @@
 	margin: 40px auto;
 }
 
-ul li{
-	background-color: #82c4eb;
-	margin-bottom: 5px;
-	padding: 30px;
+.counter-message {
+	margin-bottom: 30px;
 }
 
-ul img {
+article{
+	background-color: #e8eaf6;
+	margin-bottom: 3px;
+	padding: 20px 30px;
+}
+
+article img {
 	display: inline-block;
 	margin-right: 30px;
-	width: 150px;
+	width: 14%;
+}
+
+article h4 {
+	margin-top: 0;
 }
 
 .description {
 	display: inline-block;
 	vertical-align: top;
+	width: 80%;
 }

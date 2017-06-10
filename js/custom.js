@@ -14,20 +14,25 @@ function searchMovie(movieCategory) {
 				var category = movie.category;
 
 				//creates the DOM elements			
-				var $item = document.createElement("li");
-				var $title = document.createElement("h3");
+				var $item = document.createElement("article");
+				var $title = document.createElement("h4");
 				var $category = document.createElement("i");		
 				var $duration = document.createElement("p");
+				var $plot = document.createElement("p");
 				var $image = document.createElement("img");
 				var $description = document.createElement("div");			
 
 				if(category == movieCategory) {
-					//counter = counter + 1;
+					//creates a counter
+					counter = counter + 1;
+					var counterItem = document.getElementById("counter");
+					counterItem.innerHTML = "We found " + counter + " results for " + movieCategory;
 
 					//inserts the information inside the created elements
 					$title.innerHTML = movie.film;
 					$duration.innerHTML = "Duration: " + movie.duration;
 					$category.innerHTML = category;
+					$plot.innerHTML = movie.plot;
 					$image.setAttribute("src", movie.image.url);
 					$image.setAttribute("alt", movie.image.alt);
 					$description.setAttribute("class", "description");
@@ -36,6 +41,7 @@ function searchMovie(movieCategory) {
 					$description.appendChild($title);
 					$description.appendChild($category);
 					$description.appendChild($duration);
+					$description.appendChild($plot);
 					$item.appendChild($image);
 					$item.appendChild($description);
 					filmList.appendChild($item);					
@@ -48,4 +54,4 @@ function searchMovie(movieCategory) {
 };
 
 //OBJETIVES
-// cheate a counter a show the number of results next to: "We found x results for x"
+// show only 5 results and create a pagination
