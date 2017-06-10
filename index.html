@@ -21,14 +21,22 @@
   </nav>
   <div class="row search-actions">
     <div class="col s12">
-      <a class="waves-effect waves-light btn" onclick="searchCartoon()">Cartoon</a>
-      <a class="waves-effect waves-light btn" onclick="searchAdventure()">
+      <a class="waves-effect waves-light btn" onclick="searchMovie('cartoon')">Cartoon</a>
+      <a class="waves-effect waves-light btn" onclick="searchMovie('adventure')">
     Adventure</a>
     </div>
   </div>
   <div class="row">
     <div class="col s12">
-      <ul id="result">
+      <ul id="items">
+        <li id="templateItem">
+          <img>
+          <div class="description">
+            <i></i>
+            <h3></h3>
+            <p></p>
+          </div>
+        </li>
       </ul>      
     </div>
   </div>
