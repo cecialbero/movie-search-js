@@ -19,10 +19,23 @@
       <span class="brand-logo">Movie Search</span>
     </div>
   </nav>
+   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="search-film" type="text" class="validate">
+          <label for="last_name">Search by film name</label>
+          <a class="waves-effect waves-light btn" onclick="searchByFilm()">Search</a>
+        </div>
+
+      </div>
+    </form>
+  </div>
+        
   <div class="row search-actions">
     <div class="col s12">
-      <a class="waves-effect waves-light btn" onclick="searchMovie('cartoon')">Cartoon</a>
-      <a class="waves-effect waves-light btn" onclick="searchMovie('adventure')">
+      <a class="waves-effect waves-light btn" onclick="searchByCategory('cartoon')">Cartoon</a>
+      <a class="waves-effect waves-light btn" onclick="searchByCategory('adventure')">
     Adventure</a>
     </div>
   </div>
