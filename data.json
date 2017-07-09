@@ -48,5 +48,35 @@
 			"url": "images/lowriders.jpg",
 			"alt": "Lowriders"
 		}
+	},
+	{
+		"film": "How to Train Your Dragon 2",
+		"category": "cartoon",
+		"duration": "1hr 50min",
+		"plot": "Set in the mythical world of burly Vikings and wild dragons, and based on the book by Cressida Cowell, the action comedy tells the story of Hiccup, a Viking teenager who doesn't exactly fit in with his tribe's longstanding tradition of heroic dragon slayers. Hiccup's world is turned upside down when he encounters a dragon that challenges him and his fellow Vikings to see the world from an entirely different point of view.",
+		"image": {
+			"url": "images/train-dragon.jpg",
+			"alt": "How to Train Your Dragon 2"
+		}
+	},
+	{
+		"film": "Kung Fu Panda 3",
+		"category": "cartoon",
+		"duration": "1hr 45min",
+		"plot": "When Po's long-lost panda father suddenly reappears, the reunited duo travels to a secret panda paradise to meet scores of hilarious new panda characters. But when the supernatural villain Kai begins to sweep across China defeating all the kung fu masters, Po must do the impossible-learn to train a village full of his fun-loving, clumsy brethren to become the ultimate band of Kung Fu Pandas!",
+		"image": {
+			"url": "images/panda3.jpg",
+			"alt": "Kung Fu Panda 3"
+		}
+	},
+	{
+		"film": "Ice Age: Collision Course",
+		"category": "cartoon",
+		"duration": "1hr 23min",
+		"plot": "Scrat's epic pursuit of the elusive acorn catapults him into the universe where he accidentally sets off a series of cosmic events that transform and threaten the Ice Age World. To save themselves, Sid, Manny, Diego, and the rest of the herd must leave their home and embark on a quest full of comedy and adventure, travelling to exotic new lands and encountering a host of colorful new characters.",
+		"image": {
+			"url": "images/ice-age.jpg",
+			"alt": "Ice Age: Collision Course"
+		}
 	}
 ]

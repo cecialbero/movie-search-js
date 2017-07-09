@@ -1,29 +1,15 @@
-.search-actions {
-	margin: 40px auto;
+section {
+	margin-bottom: 30px;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
 }
 
 .counter-message {
 	margin-bottom: 30px;
-}
-
-article{
-	background-color: #e8eaf6;
-	margin-bottom: 3px;
-	padding: 20px 30px;
-}
-
-article img {
-	display: inline-block;
-	margin-right: 30px;
-	width: 14%;
-}
-
-article h4 {
-	margin-top: 0;
-}
-
-.description {
-	display: inline-block;
-	vertical-align: top;
-	width: 80%;
 }

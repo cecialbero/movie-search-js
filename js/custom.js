@@ -11,40 +11,34 @@ function searchByCategory(movieCategory) {
 
 			for(i = 0; i < response.length; i++) {
 				var movie = response[i];
-				var category = movie.category;
+				var itemCategory = movie.category;
 
-				//creates the DOM elements			
-				var $item = document.createElement("article");
-				var $title = document.createElement("h4");
-				var $category = document.createElement("i");		
-				var $duration = document.createElement("p");
-				var $plot = document.createElement("p");
-				var $image = document.createElement("img");
-				var $description = document.createElement("div");			
+				//selects the DOM elements
+				var item = document.querySelector(".movie-thumbnail");
+				var title = item.querySelector("h3");
+				var category = item.querySelector("h4");
+				var plot = item.querySelector("p");
+				var image = item.querySelector("img");		
 
-				if(category == movieCategory) {
+				if(itemCategory == movieCategory) {
 					//creates a counter
 					counter = counter + 1;
 					var counterItem = document.getElementById("counter");
 					counterItem.innerHTML = "We found " + counter + " results for " + movieCategory;
 
-					//inserts the information inside the created elements
-					$title.innerHTML = movie.film;
-					$duration.innerHTML = "Duration: " + movie.duration;
-					$category.innerHTML = category;
-					$plot.innerHTML = movie.plot;
-					$image.setAttribute("src", movie.image.url);
-					$image.setAttribute("alt", movie.image.alt);
-					$description.setAttribute("class", "description");
+					//inserts the information inside the selected elements
+					title.innerHTML = movie.film;
+					category.innerHTML = itemCategory;
+					plot.innerHTML = movie.plot;
+					image.setAttribute("src", movie.image.url);
+					image.setAttribute("alt", movie.image.alt);
 
-					//appends the created elements into de DOM
-					$description.appendChild($title);
-					$description.appendChild($category);
-					$description.appendChild($duration);
-					$description.appendChild($plot);
-					$item.appendChild($image);
-					$item.appendChild($description);
-					filmList.appendChild($item);					
+					//clones the thumbnail element	
+					var cloneItem = item.cloneNode(true);
+					cloneItem.classList.add("show");
+					cloneItem.classList.remove("hide");
+					var itemList = document.getElementById("item-list");
+					itemList.appendChild(cloneItem);		
 				}
 			}
 		}
@@ -62,6 +56,8 @@ function searchByFilm() {
 			var response = JSON.parse(this.responseText);
 
 			var userData = document.getElementById("search-film").value;
+			var counterItem = document.getElementById("counter");
+			counterItem.innerHTML = "";
 			userData = userData.toLowerCase();
 			userData = userData.split(" ");		
 
@@ -87,7 +83,7 @@ function searchByFilm() {
 
 						//creates the DOM elements			
 						var $item = document.createElement("article");
-						var $title = document.createElement("h4");
+						var $title = document.createElement("h2");
 						var $category = document.createElement("i");		
 						var $duration = document.createElement("p");
 						var $plot = document.createElement("p");
@@ -111,6 +107,11 @@ function searchByFilm() {
 						$item.appendChild($image);
 						$item.appendChild($description);
 						filmList.appendChild($item);
+
+						var counter = 0;
+						//creates a counter
+						counter = counter + 1;
+						counterItem.innerHTML = "We found " + counter + " results for " + userData;
 					}
 				}
 			}
@@ -119,3 +120,6 @@ function searchByFilm() {
 	httpRequest.open('GET','data.json',true);
 	httpRequest.send();
 };
+
+//Paginador
+//Obj: contar cuando elementos, mostrar solo 3. Los otros colocarlos en segundo div

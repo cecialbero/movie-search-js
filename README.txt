@@ -1,4 +1,4 @@
-Local server runs on httpster
+Local server can be run with httpster
 https://simbco.github.io/httpster/
 
 1) Install httpster
