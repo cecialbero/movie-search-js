@@ -4,10 +4,7 @@ function searchByCategory(movieCategory) {
 		if (this.readyState == 4 && this.status == 200) {
 			var response = JSON.parse(this.responseText);
 			var i;
-			var counter = 0;
-			var filmList = document.getElementById("filmList");
-			//erases any possible data inside the filmList element
-			filmList.innerHTML = "";				
+			var counter = 0;			
 
 			for(i = 0; i < response.length; i++) {
 				var movie = response[i];
@@ -69,44 +66,36 @@ function searchByFilm() {
 			    }
 			}
 
-			var filmList = document.getElementById("filmList");
-			//erases any possible data inside the filmList element
-			filmList.innerHTML = "";
 
 			for(var j = 0; j < response.length; j++) {
-				var movies = response[j];
-				var movieTitle = movies.film;
+				var movie = response[j];
+				var movieTitle = movie.film;
 				movieTitle = movieTitle.toLowerCase();
 				for(var k = 0; k < userData.length; k++) {
 					var wordSearch = movieTitle.search(userData[k]);
 					if(wordSearch != -1) {
 
-						//creates the DOM elements			
-						var $item = document.createElement("article");
-						var $title = document.createElement("h2");
-						var $category = document.createElement("i");		
-						var $duration = document.createElement("p");
-						var $plot = document.createElement("p");
-						var $image = document.createElement("img");
-						var $description = document.createElement("div");
+						//selects the DOM elements
+						var item = document.querySelector(".movie-thumbnail");
+						var title = item.querySelector("h3");
+						var category = item.querySelector("h4");
+						var plot = item.querySelector("p");
+						var image = item.querySelector("img");
 
-						//inserts the information inside the created elements
-						$title.innerHTML = movies.film;
-						$duration.innerHTML = "Duration: " + movies.duration;
-						$category.innerHTML = movies.category;
-						$plot.innerHTML = movies.plot;
-						$image.setAttribute("src", movies.image.url);
-						$image.setAttribute("alt", movies.image.alt);
-						$description.setAttribute("class", "description");
+						//inserts the information inside the selected elements
+						title.innerHTML = movie.film;
+						category.innerHTML = movie.category;
+						plot.innerHTML = movie.plot;
+						console.log(plot.length);
+						image.setAttribute("src", movie.image.url);
+						image.setAttribute("alt", movie.image.alt);
 
-						//appends the created elements into de DOM
-						$description.appendChild($title);
-						$description.appendChild($category);
-						$description.appendChild($duration);
-						$description.appendChild($plot);
-						$item.appendChild($image);
-						$item.appendChild($description);
-						filmList.appendChild($item);
+						//clones the thumbnail element	
+						var cloneItem = item.cloneNode(true);
+						cloneItem.classList.add("show");
+						cloneItem.classList.remove("hide");
+						var itemList = document.getElementById("item-list");
+						itemList.appendChild(cloneItem);
 
 						var counter = 0;
 						//creates a counter
@@ -120,6 +109,3 @@ function searchByFilm() {
 	httpRequest.open('GET','data.json',true);
 	httpRequest.send();
 };
-
-//Paginador
-//Obj: contar cuando elementos, mostrar solo 3. Los otros colocarlos en segundo div
