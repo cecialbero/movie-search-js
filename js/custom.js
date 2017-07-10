@@ -5,20 +5,17 @@ var category = item.querySelector("h4");
 var plot = item.querySelector("p");
 var image = item.querySelector("img");
 var itemList = document.getElementById("item-list");
+var counterItem = document.getElementById("counter");
 
 //counter
 var counter = 0;
-function createsCounter(keyWord) {
+function createsCounter(searchItem) {
 	counter = counter + 1;
-	var counterItem = document.getElementById("counter");
-	if(counter > 1) {
-		counterItem.innerHTML = "We found " + counter + " results for " + keyWord;
-	}
-	else if(counter == 1) {
-		counterItem.innerHTML = "We found " + counter + " result for " + keyWord;
+	if(counter == 1) {
+		counterItem.innerHTML = "We found " + counter + " result for " + '"' +  searchItem + '"';
 	}
 	else {
-		counterItem.innerHTML = "There are no results for " + keyWord;
+		counterItem.innerHTML = "We found " + counter + " results for " + '"' + searchItem + '"';
 	}
 }
 
@@ -69,8 +66,10 @@ function searchByFilm() {
 			var userData = document.getElementById("search-film").value;
 			itemList.innerHTML = "";
 			counter = 0;
+			counterItem.innerHTML = "There are no results for " + '"' + userData + '"';
+
 			userData = userData.toLowerCase();
-			userData = userData.split(" ");		
+			userData = userData.split(" ");	
 
 			var eraseThe = 'the';
 			var eraseOf = 'of';
@@ -84,8 +83,10 @@ function searchByFilm() {
 				var movie = response[j];
 				var movieTitle = movie.film;
 				movieTitle = movieTitle.toLowerCase();
+
 				for(var k = 0; k < userData.length; k++) {
 					var wordSearch = movieTitle.search(userData[k]);
+
 					if(wordSearch != -1) {
 
 						//inserts the information inside the selected elements
