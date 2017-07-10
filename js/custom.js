@@ -15,7 +15,7 @@ function createsCounter(keyWord) {
 	else if(counter == 1) {
 		counterItem.innerHTML = "We found " + counter + " result for " + keyWord;
 	}
-	else if(counter == false){
+	else {
 		counterItem.innerHTML = "There are no results for " + keyWord;
 	}
 }
@@ -28,8 +28,6 @@ function searchByCategory(movieCategory) {
 			var i;
 			var itemList = document.getElementById("item-list");
 			counter = 0;
-			//var newItems = document.querySelector(".show");	
-			//newItems.parentNode.removeChild(newItems);
 
 			for(i = 0; i < response.length; i++) {
 				var movie = response[i];
@@ -66,8 +64,6 @@ function searchByFilm() {
 			var response = JSON.parse(this.responseText);
 
 			var userData = document.getElementById("search-film").value;
-			//var counterItem = document.getElementById("counter");
-			//counterItem.innerHTML = "";
 			counter = 0;
 			userData = userData.toLowerCase();
 			userData = userData.split(" ");		
