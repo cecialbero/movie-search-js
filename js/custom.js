@@ -4,6 +4,21 @@ var title = item.querySelector("h3");
 var category = item.querySelector("h4");
 var plot = item.querySelector("p");
 var image = item.querySelector("img");
+var counter = 0;
+
+function createsCounter(keyWord) {
+	counter = counter + 1;
+	var counterItem = document.getElementById("counter");
+	if(counter > 1) {
+		counterItem.innerHTML = "We found " + counter + " results for " + keyWord;
+	}
+	else if(counter == 1) {
+		counterItem.innerHTML = "We found " + counter + " result for " + keyWord;
+	}
+	else if(counter == false){
+		counterItem.innerHTML = "There are no results for " + keyWord;
+	}
+}
 
 function searchByCategory(movieCategory) {	
 	var httpRequest = new XMLHttpRequest();
@@ -11,8 +26,8 @@ function searchByCategory(movieCategory) {
 		if (this.readyState == 4 && this.status == 200) {
 			var response = JSON.parse(this.responseText);
 			var i;
-			var counter = 0;
 			var itemList = document.getElementById("item-list");
+			counter = 0;
 			//var newItems = document.querySelector(".show");	
 			//newItems.parentNode.removeChild(newItems);
 
@@ -21,10 +36,7 @@ function searchByCategory(movieCategory) {
 				var itemCategory = movie.category;		
 
 				if(itemCategory == movieCategory) {
-					//creates a counter
-					counter = counter + 1;
-					var counterItem = document.getElementById("counter");
-					counterItem.innerHTML = "We found " + counter + " results for " + movieCategory;
+					createsCounter(movieCategory);
 
 					//inserts the information inside the selected elements
 					title.innerHTML = movie.film;
@@ -54,8 +66,9 @@ function searchByFilm() {
 			var response = JSON.parse(this.responseText);
 
 			var userData = document.getElementById("search-film").value;
-			var counterItem = document.getElementById("counter");
-			counterItem.innerHTML = "";
+			//var counterItem = document.getElementById("counter");
+			//counterItem.innerHTML = "";
+			counter = 0;
 			userData = userData.toLowerCase();
 			userData = userData.split(" ");		
 
@@ -66,7 +79,6 @@ function searchByFilm() {
 			        userData.splice(i, 1);
 			    }
 			}
-
 
 			for(var j = 0; j < response.length; j++) {
 				var movie = response[j];
@@ -91,10 +103,7 @@ function searchByFilm() {
 						var itemList = document.getElementById("item-list");
 						itemList.appendChild(cloneItem);
 
-						var counter = 0;
-						//creates a counter
-						counter = counter + 1;
-						counterItem.innerHTML = "We found " + counter + " results for " + userData;
+						createsCounter(userData);
 					}
 				}
 			}
