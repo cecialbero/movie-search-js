@@ -1,21 +1,24 @@
+//selects the DOM elements
+var item = document.querySelector(".movie-thumbnail");
+var title = item.querySelector("h3");
+var category = item.querySelector("h4");
+var plot = item.querySelector("p");
+var image = item.querySelector("img");
+
 function searchByCategory(movieCategory) {	
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var response = JSON.parse(this.responseText);
 			var i;
-			var counter = 0;			
+			var counter = 0;
+			var itemList = document.getElementById("item-list");
+			//var newItems = document.querySelector(".show");	
+			//newItems.parentNode.removeChild(newItems);
 
 			for(i = 0; i < response.length; i++) {
 				var movie = response[i];
-				var itemCategory = movie.category;
-
-				//selects the DOM elements
-				var item = document.querySelector(".movie-thumbnail");
-				var title = item.querySelector("h3");
-				var category = item.querySelector("h4");
-				var plot = item.querySelector("p");
-				var image = item.querySelector("img");		
+				var itemCategory = movie.category;		
 
 				if(itemCategory == movieCategory) {
 					//creates a counter
@@ -34,8 +37,7 @@ function searchByCategory(movieCategory) {
 					var cloneItem = item.cloneNode(true);
 					cloneItem.classList.add("show");
 					cloneItem.classList.remove("hide");
-					var itemList = document.getElementById("item-list");
-					itemList.appendChild(cloneItem);		
+					itemList.appendChild(cloneItem);
 				}
 			}
 		}
@@ -43,7 +45,6 @@ function searchByCategory(movieCategory) {
 	httpRequest.open('GET','data.json',true);
 	httpRequest.send();
 };
-
 
 //search by film name on the search fiel
 function searchByFilm() {	
@@ -74,13 +75,6 @@ function searchByFilm() {
 				for(var k = 0; k < userData.length; k++) {
 					var wordSearch = movieTitle.search(userData[k]);
 					if(wordSearch != -1) {
-
-						//selects the DOM elements
-						var item = document.querySelector(".movie-thumbnail");
-						var title = item.querySelector("h3");
-						var category = item.querySelector("h4");
-						var plot = item.querySelector("p");
-						var image = item.querySelector("img");
 
 						//inserts the information inside the selected elements
 						title.innerHTML = movie.film;
