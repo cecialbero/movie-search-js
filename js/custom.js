@@ -87,7 +87,7 @@ function searchByFilm() {
 				for(var k = 0; k < userData.length; k++) {
 					var wordSearch = movieTitle.search(userData[k]);
 
-					if(wordSearch != -1) {
+					if(wordSearch != -1 && wordSearch != false) {
 
 						//inserts the information inside the selected elements
 						title.innerHTML = movie.film;
