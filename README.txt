@@ -1,3 +1,6 @@
+Film Search App
+Web App to search movies from a json using Ajax and Vanilla javaScript
+
 Local server can be run with httpster
 https://simbco.github.io/httpster/
 
