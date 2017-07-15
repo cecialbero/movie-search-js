@@ -1,7 +1,7 @@
 //selects the DOM elements
 var item = document.querySelector(".movie-thumbnail");
-var title = item.querySelector("h3");
-var category = item.querySelector("h4");
+var title = item.querySelector("h4");
+var category = item.querySelector("h5");
 var plot = item.querySelector("p");
 var image = item.querySelector("img");
 var itemList = document.getElementById("item-list");
@@ -112,3 +112,11 @@ function searchByFilm() {
 	httpRequest.open('GET','data.json',true);
 	httpRequest.send();
 };
+
+var searchFilm = document.getElementById("search-film");
+searchFilm.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+    	e.preventDefault();
+    	searchByFilm();
+    }
+});
