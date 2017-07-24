@@ -9,3 +9,10 @@ section {
 h4 {
 	height: 38px;
 }
+
+.btn-primary {
+	background-image: none;
+	border-radius: 0;
+	border: none;
+	padding: 7px 12px;
+}
