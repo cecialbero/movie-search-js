@@ -19,7 +19,7 @@ function createsCounter(searchItem) {
 	}
 }
 
-function searchByCategory(movieCategory) {	
+function searchByCategory(movieCategory) {
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -30,7 +30,7 @@ function searchByCategory(movieCategory) {
 
 			for(i = 0; i < response.length; i++) {
 				var movie = response[i];
-				var itemCategory = movie.category;		
+				var itemCategory = movie.category;
 
 				if(itemCategory == movieCategory) {
 					createsCounter(movieCategory);
@@ -43,7 +43,7 @@ function searchByCategory(movieCategory) {
 					image.setAttribute("src", movie.image.url);
 					image.setAttribute("alt", movie.image.alt);
 
-					//clones the thumbnail element	
+					//clones the thumbnail element
 					var cloneItem = item.cloneNode(true);
 					cloneItem.classList.add("show");
 					cloneItem.classList.remove("hide");
@@ -56,8 +56,8 @@ function searchByCategory(movieCategory) {
 	httpRequest.send();
 };
 
-//search by film name on the search fiel
-function searchByFilm() {	
+//search by film name on the search box
+function searchByFilm() {
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -67,44 +67,34 @@ function searchByFilm() {
 			itemList.innerHTML = "";
 			counter = 0;
 			counterItem.innerHTML = "There are no results for " + '"' + userData + '"';
-
-			userData = userData.toLowerCase();
-			userData = userData.split(" ");	
-
-			var eraseThe = 'the';
-			var eraseOf = 'of';
-			for (var i=userData.length-1; i>=0; i--) {
-			    if (userData[i] === eraseThe || userData[i] === eraseOf) {
-			        userData.splice(i, 1);
-			    }
+			if(userData == "") {
+				counterItem.innerHTML = "";
 			}
 
+			//search the movie titles at the json
 			for(var j = 0; j < response.length; j++) {
 				var movie = response[j];
 				var movieTitle = movie.film;
-				movieTitle = movieTitle.toLowerCase();
 
-				for(var k = 0; k < userData.length; k++) {
-					var wordSearch = movieTitle.search(userData[k]);
+				var regexp = new RegExp(userData, "gi");
+				var wordSearch = movieTitle.search(regexp);
 
-					if(wordSearch != -1 && wordSearch != false) {
+				if(wordSearch != -1 && userData != false) {
+					//inserts the information inside the selected elements
+					title.innerHTML = movie.film;
+					category.innerHTML = movie.category;
+					plot.innerHTML = movie.plot;
+					image.setAttribute("src", movie.image.url);
+					image.setAttribute("alt", movie.image.alt);
 
-						//inserts the information inside the selected elements
-						title.innerHTML = movie.film;
-						category.innerHTML = movie.category;
-						plot.innerHTML = movie.plot;
-						image.setAttribute("src", movie.image.url);
-						image.setAttribute("alt", movie.image.alt);
+					//clones the thumbnail element
+					var cloneItem = item.cloneNode(true);
+					cloneItem.classList.add("show");
+					cloneItem.classList.remove("hide");
+					itemList = document.getElementById("item-list");
+					itemList.appendChild(cloneItem);
 
-						//clones the thumbnail element	
-						var cloneItem = item.cloneNode(true);
-						cloneItem.classList.add("show");
-						cloneItem.classList.remove("hide");
-						itemList = document.getElementById("item-list");
-						itemList.appendChild(cloneItem);
-
-						createsCounter(userData);
-					}
+					createsCounter(userData);
 				}
 			}
 		}
