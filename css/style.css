@@ -1,9 +1,58 @@
 section {
-	margin-bottom: 30px;
+	margin-top: 30px;
 }
 
 .counter-message {
 	margin-bottom: 30px;
+}
+
+.navbar {
+	min-height: 60px;
+}
+
+.navbar-brand {
+	padding: 22px 15px;
+}
+
+.navbar-default {
+	background-color: #1b1b1b;
+  background-image: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-brand {
+	color: #ccc;
+}
+
+.navbar-form .input-group>.form-control {
+	border-radius: 0;
+  background-color: #333;
+  border: 0;
+}
+
+.navbar-form {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.form-control {
+	height: 60px;
+	font-size: 15px;
+}
+
+.input-group-btn .btn {
+	border: 0;
+	border-radius: 0;
+	background-color: #333;
+	background-image: none;
+  box-shadow: none;
+  height: 60px;
+}
+
+.input-group-btn .glyphicon-search {
+	color: #ccc;
+	text-shadow: none;
 }
 
 h4 {
