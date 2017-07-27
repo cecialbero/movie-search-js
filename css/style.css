@@ -29,6 +29,11 @@ section {
 	border-radius: 0;
   background-color: #333;
   border: 0;
+	color: #ccc;
+}
+
+.navbar-form .input-group>.form-control:focus {
+	box-shadow: none;
 }
 
 .navbar-form {
