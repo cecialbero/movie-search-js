@@ -1,11 +1,20 @@
+/*General Styling*/
 section {
 	margin-top: 30px;
 }
 
+h4 {
+	height: 38px;
+}
+/*End General Styling*/
+
+/*Counter*/
 .counter-message {
 	margin-bottom: 30px;
 }
+/*End Counter*/
 
+/*Nav Bar*/
 .navbar {
 	min-height: 60px;
 	margin-bottom: 0;
@@ -13,6 +22,17 @@ section {
 
 .navbar-brand {
 	padding: 22px 15px;
+}
+
+.navbar-default {
+	background-color: #1b1b1b;
+  background-image: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-brand {
+	color: #ccc;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -28,19 +48,13 @@ section {
 	padding-bottom: 20px;
 }
 
-.navbar-default {
-	background-color: #1b1b1b;
-  background-image: none;
-  border: 0;
-  border-radius: 0;
-}
-
-.navbar-default .navbar-brand {
-	color: #ccc;
-}
-
 .navbar-nav .open .dropdown-menu>li>a:hover {
 	cursor: pointer;
+}
+
+.navbar-form {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .navbar-form .input-group>.form-control {
@@ -54,11 +68,9 @@ section {
 	box-shadow: none;
 }
 
-.navbar-form {
-	margin-top: 0;
-	margin-bottom: 0;
-}
+/*End Nav Bar*/
 
+/*Form*/
 .form-control {
 	height: 60px;
 	font-size: 15px;
@@ -77,10 +89,7 @@ section {
 	color: #ccc;
 	text-shadow: none;
 }
-
-h4 {
-	height: 38px;
-}
+/*End Form*/
 
 .btn-primary {
 	background-image: none;
@@ -110,4 +119,5 @@ h4 {
 		color: #555;
 		cursor: pointer;
 	}
+	
 }
