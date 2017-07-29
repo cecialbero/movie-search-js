@@ -8,10 +8,24 @@ section {
 
 .navbar {
 	min-height: 60px;
+	margin-bottom: 0;
 }
 
 .navbar-brand {
 	padding: 22px 15px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #ccc;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #ccc;
+}
+
+.navbar-nav>li>a {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .navbar-default {
@@ -23,6 +37,10 @@ section {
 
 .navbar-default .navbar-brand {
 	color: #ccc;
+}
+
+.navbar-nav .open .dropdown-menu>li>a:hover {
+	cursor: pointer;
 }
 
 .navbar-form .input-group>.form-control {
@@ -69,4 +87,27 @@ h4 {
 	border-radius: 0;
 	border: none;
 	padding: 7px 12px;
+}
+
+.thumbnail {
+	border-radius: 0;
+}
+
+@media (max-width: 767px) {
+
+	section {
+		margin-top: 20px;
+	}
+
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border-color: #333;
+	}
+	.navbar-nav .open .dropdown-menu>li:hover {
+		background-color: #e2e2e2;
+	}
+
+	.navbar-nav .open .dropdown-menu>li>a:hover {
+		color: #555;
+		cursor: pointer;
+	}
 }
