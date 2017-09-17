@@ -7,6 +7,18 @@ var image = item.querySelector("img");
 var itemList = document.getElementById("item-list");
 var counterItem = document.getElementById("counter");
 
+//counter
+var counter = 0;
+function Counter(searchItem) {
+	counter = counter + 1;
+	if(counter == 1) {
+		counterItem.innerHTML = "We found " + counter + " result for " + '"' +  searchItem + '"';
+	}
+	else {
+		counterItem.innerHTML = "We found " + counter + " results for " + '"' + searchItem + '"';
+	}
+}
+
 //Ajax Request
 function ajaxRequest(method, url, callback) {
 	var hrx = new XMLHttpRequest();
@@ -19,7 +31,7 @@ function ajaxRequest(method, url, callback) {
 	hrx.send();
 };
 
-//Search by select tag
+//Search by Search by category select
 var links = document.querySelectorAll('.category-link');
 links.forEach(function(link){
 	link.addEventListener('click', function(e){
@@ -44,23 +56,13 @@ links.forEach(function(link){
 						cloneItem.classList.add("show");
 						cloneItem.classList.remove("hide");
 						itemList.appendChild(cloneItem);
+
+						Counter(link.text);
 					}
 				};
 			}
 	});
 });
-
-//counter
-var counter = 0;
-function createsCounter(searchItem) {
-	counter = counter + 1;
-	if(counter == 1) {
-		counterItem.innerHTML = "We found " + counter + " result for " + '"' +  searchItem + '"';
-	}
-	else {
-		counterItem.innerHTML = "We found " + counter + " results for " + '"' + searchItem + '"';
-	}
-}
 
 function searchByCategory(movieCategory) {
 	var httpRequest = new XMLHttpRequest();
