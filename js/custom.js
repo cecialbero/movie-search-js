@@ -7,6 +7,49 @@ var image = item.querySelector("img");
 var itemList = document.getElementById("item-list");
 var counterItem = document.getElementById("counter");
 
+//Ajax Request
+function ajaxRequest(method, url, callback) {
+	var hrx = new XMLHttpRequest();
+	hrx.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			callback(JSON.parse(this.responseText));
+		}
+	}
+	hrx.open(method, url, true);
+	hrx.send();
+};
+
+//Search by select tag
+var links = document.querySelectorAll('.category-link');
+links.forEach(function(link){
+	link.addEventListener('click', function(e){
+			e.preventDefault();
+			ajaxRequest('GET', 'data.json', categoryRender);
+
+			function categoryRender(response){
+				itemList.innerHTML = "";
+				for(var i = 0; i < response.length; i++){
+					var movie = response[i];
+					if(movie.category == link.text.toLowerCase()) {
+						//inserts the information inside the selected elements
+						title.innerHTML = movie.film;
+						category.innerHTML = movie.category.toUpperCase();
+						var moviePlot = movie.plot.substring(0, 100);
+						plot.innerHTML = moviePlot + "...";
+						image.setAttribute("src", movie.image.url);
+						image.setAttribute("alt", movie.image.alt);
+
+						//clones the thumbnail element
+						var cloneItem = item.cloneNode(true);
+						cloneItem.classList.add("show");
+						cloneItem.classList.remove("hide");
+						itemList.appendChild(cloneItem);
+					}
+				};
+			}
+	});
+});
+
 //counter
 var counter = 0;
 function createsCounter(searchItem) {
