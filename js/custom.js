@@ -7,7 +7,7 @@ var image = item.querySelector("img");
 var itemList = document.getElementById("item-list");
 var counterItem = document.getElementById("counter");
 
-//counter
+//Counter
 var counter = 0;
 function Counter(searchItem) {
 	counter = counter + 1;
@@ -20,7 +20,7 @@ function Counter(searchItem) {
 }
 
 //Ajax Request
-function ajaxRequest(method, url, callback) {
+function AjaxRequest(method, url, callback) {
 	var hrx = new XMLHttpRequest();
 	hrx.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -36,10 +36,11 @@ var links = document.querySelectorAll('.category-link');
 links.forEach(function(link){
 	link.addEventListener('click', function(e){
 			e.preventDefault();
-			ajaxRequest('GET', 'data.json', categoryRender);
+			AjaxRequest('GET', 'data.json', CategoryRender);
 
-			function categoryRender(response){
+			function CategoryRender(response){
 				itemList.innerHTML = "";
+				counter = 0;
 				for(var i = 0; i < response.length; i++){
 					var movie = response[i];
 					if(movie.category == link.text.toLowerCase()) {
@@ -59,47 +60,10 @@ links.forEach(function(link){
 
 						Counter(link.text);
 					}
-				};
+				}
 			}
 	});
 });
-
-function searchByCategory(movieCategory) {
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var response = JSON.parse(this.responseText);
-			var i;
-			itemList.innerHTML = "";
-			counter = 0;
-
-			for(i = 0; i < response.length; i++) {
-				var movie = response[i];
-				var itemCategory = movie.category;
-
-				if(itemCategory == movieCategory) {
-					createsCounter(movieCategory);
-
-					//inserts the information inside the selected elements
-					title.innerHTML = movie.film;
-					category.innerHTML = itemCategory;
-					var moviePlot = movie.plot.substring(0, 100);
-					plot.innerHTML = moviePlot + "...";
-					image.setAttribute("src", movie.image.url);
-					image.setAttribute("alt", movie.image.alt);
-
-					//clones the thumbnail element
-					var cloneItem = item.cloneNode(true);
-					cloneItem.classList.add("show");
-					cloneItem.classList.remove("hide");
-					itemList.appendChild(cloneItem);
-				}
-			}
-		}
-	};
-	httpRequest.open('GET','data.json',true);
-	httpRequest.send();
-};
 
 //search by film name on the search box
 function searchByFilm() {
