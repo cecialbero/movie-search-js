@@ -65,57 +65,55 @@ links.forEach(function(link){
 	});
 });
 
+
 //search by film name on the search box
-function searchByFilm() {
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var response = JSON.parse(this.responseText);
+var searchBtn = document.querySelector('#search-film button');
+var userData = document.querySelector("#search-film input");
 
-			var userData = document.getElementById("search-film").value;
-			itemList.innerHTML = "";
-			counter = 0;
-			counterItem.innerHTML = "There are no results for " + '"' + userData + '"';
-			if(userData == "") {
-				counterItem.innerHTML = "";
-			}
+searchBtn.addEventListener('click', function(){
+	AjaxRequest('GET', 'data.json', SearchRender);
+}, true);
 
-			//search the movie titles at the json
-			for(var j = 0; j < response.length; j++) {
-				var movie = response[j];
-				var movieTitle = movie.film;
+function SearchRender(response) {
 
-				var regexp = new RegExp(userData, "gi");
-				var wordSearch = movieTitle.search(regexp);
+	itemList.innerHTML = "";
+	counter = 0;
+	counterItem.innerHTML = "There are no results for " + '"' + userData.value + '"';
+	if(userData.value == "") {
+		counterItem.innerHTML = "";
+	}
 
-				if(wordSearch != -1 && userData != false) {
-					//inserts the information inside the selected elements
-					title.innerHTML = movie.film;
-					category.innerHTML = movie.category;
-					plot.innerHTML = movie.plot;
-					image.setAttribute("src", movie.image.url);
-					image.setAttribute("alt", movie.image.alt);
+	//search the movie titles at the json
+	for(var j = 0; j < response.length; j++) {
+		var movie = response[j];
+		var movieTitle = movie.film;
 
-					//clones the thumbnail element
-					var cloneItem = item.cloneNode(true);
-					cloneItem.classList.add("show");
-					cloneItem.classList.remove("hide");
-					itemList = document.getElementById("item-list");
-					itemList.appendChild(cloneItem);
+		var regexp = new RegExp(userData.value, "gi");
+		var wordSearch = movieTitle.search(regexp);
 
-					createsCounter(userData);
-				}
-			}
+		if(wordSearch != -1 && userData.value != false) {
+			//inserts the information inside the selected elements
+			title.innerHTML = movie.film;
+			category.innerHTML = movie.category;
+			plot.innerHTML = movie.plot;
+			image.setAttribute("src", movie.image.url);
+			image.setAttribute("alt", movie.image.alt);
+
+			//clones the thumbnail element
+			var cloneItem = item.cloneNode(true);
+			cloneItem.classList.add("show");
+			cloneItem.classList.remove("hide");
+			itemList = document.getElementById("item-list");
+			itemList.appendChild(cloneItem);
+
+			Counter(userData.value);
 		}
-	};
-	httpRequest.open('GET','data.json',true);
-	httpRequest.send();
+	}
 };
 
-var searchFilm = document.getElementById("search-film");
-searchFilm.addEventListener("keydown", function (e) {
+userData.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
     	e.preventDefault();
-    	searchByFilm();
+    	AjaxRequest('GET', 'data.json', SearchRender);
     }
 });
