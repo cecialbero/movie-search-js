@@ -1,82 +1,83 @@
-[
-	{
-		"film": "The Boss Baby",
-		"category": "cartoon",
-		"duration": "1hr 37min",
-		"plot": "A suit-wearing, briefcase-carrying baby pairs up with his 7-year old brother to stop the dastardly plot of the CEO of Puppy Co.",
-		"image": {
-			"url": "images/boss.jpg",
-			"alt": "The Boss Baby"
-		}
-	},
-	{
-		"film": "Smurfs: The Lost Village",
-		"category": "cartoon",
-		"duration": "1hr 30min",
-		"plot": "In this fully animated, all-new take on the Smurfs, a mysterious map sets Smurfette and her friends Brainy, Clumsy and Hefty on an exciting race through the Forbidden Forest leading to the discovery of the biggest secret in Smurf history.",
-		"image": {
-			"url": "images/smurfs.jpg",
-			"alt": "Smurfs"
-		}
-	},
-	{
-		"film": "Pirates Of The Caribbean: Dead men tell no tales",
-		"category": "adventure",
-		"duration": "2hr 9min",
-		"plot": "Thrust into an all-new adventure, a down-on-his-luck Capt. Jack Sparrow feels the winds of ill-fortune blowing even more strongly when deadly ghost sailors led by his old nemesis, the evil Capt.",
-		"image": {
-			"url": "images/pirates.jpg",
-			"alt": "Pirates of the Caribbean"
-		}
-	},
-	{
-		"film": "Guardians Of The Galaxy Vol.2",
-		"category": "adventure",
-		"duration": "1hr 45min",
-		"plot": "The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill's true parentage.",
-		"image": {
-			"url": "images/guardians.jpg",
-			"alt": "Guardians Of The Galaxy Vol.2"
-		}
-	},
-	{
-		"film": "Lowriders",
-		"category": "adventure",
-		"duration": "2hr 00min",
-		"plot": "A young street artist in East Los Angeles is caught between his father's obsession with lowrider car culture, his ex-felon brother and his need for self-expression.",
-		"image": {
-			"url": "images/lowriders.jpg",
-			"alt": "Lowriders"
-		}
-	},
-	{
-		"film": "How to Train Your Dragon 2",
-		"category": "cartoon",
-		"duration": "1hr 50min",
-		"plot": "Set in the mythical world of burly Vikings and wild dragons, and based on the book by Cressida Cowell, the action comedy tells the story of Hiccup, a Viking teenager who doesn't exactly fit in with his tribe's longstanding tradition of heroic dragon slayers. Hiccup's world is turned upside down when he encounters a dragon that challenges him and his fellow Vikings to see the world from an entirely different point of view.",
-		"image": {
-			"url": "images/train-dragon.jpg",
-			"alt": "How to Train Your Dragon 2"
-		}
-	},
-	{
-		"film": "Kung Fu Panda 3",
-		"category": "cartoon",
-		"duration": "1hr 45min",
-		"plot": "When Po's long-lost panda father suddenly reappears, the reunited duo travels to a secret panda paradise to meet scores of hilarious new panda characters. But when the supernatural villain Kai begins to sweep across China defeating all the kung fu masters, Po must do the impossible-learn to train a village full of his fun-loving, clumsy brethren to become the ultimate band of Kung Fu Pandas!",
-		"image": {
-			"url": "images/panda3.jpg",
-			"alt": "Kung Fu Panda 3"
-		}
-	},
-	{
-		"film": "Ice Age: Collision Course",
-		"category": "cartoon",
-		"duration": "1hr 23min",
-		"plot": "Scrat's epic pursuit of the elusive acorn catapults him into the universe where he accidentally sets off a series of cosmic events that transform and threaten the Ice Age World. To save themselves, Sid, Manny, Diego, and the rest of the herd must leave their home and embark on a quest full of comedy and adventure, travelling to exotic new lands and encountering a host of colorful new characters.",
-		"image": {
-			"url": "images/ice-age.jpg",
-			"alt": "Ice Age: Collision Course"
-		}
-	}
-]
+{
+	"films":[{
+			"film": "The Boss Baby",
+			"category": "cartoon",
+			"duration": "1hr 37min",
+			"plot": "A suit-wearing, briefcase-carrying baby pairs up with his 7-year old brother to stop the dastardly plot of the CEO of Puppy Co.",
+			"image": {
+				"url": "images/boss.jpg",
+				"alt": "The Boss Baby"
+			}
+		},
+		{
+			"film": "Smurfs: The Lost Village",
+			"category": "cartoon",
+			"duration": "1hr 30min",
+			"plot": "In this fully animated, all-new take on the Smurfs, a mysterious map sets Smurfette and her friends Brainy, Clumsy and Hefty on an exciting race through the Forbidden Forest leading to the discovery of the biggest secret in Smurf history.",
+			"image": {
+				"url": "images/smurfs.jpg",
+				"alt": "Smurfs"
+			}
+		},
+		{
+			"film": "Pirates Of The Caribbean: Dead men tell no tales",
+			"category": "adventure",
+			"duration": "2hr 9min",
+			"plot": "Thrust into an all-new adventure, a down-on-his-luck Capt. Jack Sparrow feels the winds of ill-fortune blowing even more strongly when deadly ghost sailors led by his old nemesis, the evil Capt.",
+			"image": {
+				"url": "images/pirates.jpg",
+				"alt": "Pirates of the Caribbean"
+			}
+		},
+		{
+			"film": "Guardians Of The Galaxy Vol.2",
+			"category": "adventure",
+			"duration": "1hr 45min",
+			"plot": "The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill's true parentage.",
+			"image": {
+				"url": "images/guardians.jpg",
+				"alt": "Guardians Of The Galaxy Vol.2"
+			}
+		},
+		{
+			"film": "Lowriders",
+			"category": "adventure",
+			"duration": "2hr 00min",
+			"plot": "A young street artist in East Los Angeles is caught between his father's obsession with lowrider car culture, his ex-felon brother and his need for self-expression.",
+			"image": {
+				"url": "images/lowriders.jpg",
+				"alt": "Lowriders"
+			}
+		},
+		{
+			"film": "How to Train Your Dragon 2",
+			"category": "cartoon",
+			"duration": "1hr 50min",
+			"plot": "Set in the mythical world of burly Vikings and wild dragons, and based on the book by Cressida Cowell, the action comedy tells the story of Hiccup, a Viking teenager who doesn't exactly fit in with his tribe's longstanding tradition of heroic dragon slayers. Hiccup's world is turned upside down when he encounters a dragon that challenges him and his fellow Vikings to see the world from an entirely different point of view.",
+			"image": {
+				"url": "images/train-dragon.jpg",
+				"alt": "How to Train Your Dragon 2"
+			}
+		},
+		{
+			"film": "Kung Fu Panda 3",
+			"category": "cartoon",
+			"duration": "1hr 45min",
+			"plot": "When Po's long-lost panda father suddenly reappears, the reunited duo travels to a secret panda paradise to meet scores of hilarious new panda characters. But when the supernatural villain Kai begins to sweep across China defeating all the kung fu masters, Po must do the impossible-learn to train a village full of his fun-loving, clumsy brethren to become the ultimate band of Kung Fu Pandas!",
+			"image": {
+				"url": "images/panda3.jpg",
+				"alt": "Kung Fu Panda 3"
+			}
+		},
+		{
+			"film": "Ice Age: Collision Course",
+			"category": "cartoon",
+			"duration": "1hr 23min",
+			"plot": "Scrat's epic pursuit of the elusive acorn catapults him into the universe where he accidentally sets off a series of cosmic events that transform and threaten the Ice Age World. To save themselves, Sid, Manny, Diego, and the rest of the herd must leave their home and embark on a quest full of comedy and adventure, travelling to exotic new lands and encountering a host of colorful new characters.",
+			"image": {
+				"url": "images/ice-age.jpg",
+				"alt": "Ice Age: Collision Course"
+			}
+		}]
+}
+}
