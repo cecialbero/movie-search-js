@@ -1,9 +1,11 @@
-## Film Search App
-#### Web App to search movies from a json using Ajax and Vanilla javaScript
+## Movie Search App
+#### This was a project built by me 5 years ago, a web App to search movies from a json using Ajax and javaScript (No library, no framework). I decided to upgrade the app into version 2, a list of the work in progress:
 
-##### USAGE
-1. Type *npx http-server* to run the local server
+##### LISTS OF WIP AND TODOS
+1. WIP: Revoming AJAX petition to a static json file, instead, I'm doing an async/await call to a movie API (https://www.themoviedb.org/)
 
-2. Proceed with the installation request of http-server (Y)
+2. TODO: Include SASS styles with Gulp??
 
-3. App Available on: *http://127.0.0.1:8080* or *http://192.168.1.174:8080*
+3. TODO: pagination?
+
+4. TODO: checkboxes with options (gender, adults, language)? 
