@@ -1,0 +1,9 @@
+{
+  "name": "filmsearch",
+  "version": "1.0.0",
+  "description": "javaScript film search web app",
+  "main": "js/index.js",
+  "repository": "https://github.com/cecialbero/filmSearch-Ajax.git",
+  "author": "cecialbero <ceci.albero@gmail.com>",
+  "license": "MIT"
+}
