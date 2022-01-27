@@ -4,8 +4,10 @@
 ##### LISTS OF WIP AND TODOS
 1. WIP: Revoming AJAX petition to a static json file, instead, I'm doing an async/await call to a movie API (https://www.themoviedb.org/)
 
-2. TODO: Include SASS styles with Gulp??
+2. TODO: Upgrade bootstrap to v5
 
-3. TODO: pagination?
+3. TODO: Include SASS styles with Gulp??
 
-4. TODO: checkboxes with options (gender, adults, language)? 
+4. TODO: pagination?
+
+5. TODO: checkboxes with options (gender, adults, language)? 
