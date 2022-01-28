@@ -34,32 +34,35 @@ const getMoviesData = async (movieTitle) => {
 }
 
 const createCard = () => {
+	const card = document.createElement('div');
 	const article = document.createElement('article');
 	const cardBody = document.createElement('div');
 	const movieTitle = document.createElement('h5');
 	const moviePoster = document.createElement('img');
 	const movieDesc = document.createElement('p');
 
+	card.className = 'col-3';
 	movieTitle.className = 'card-title';
-	cardBody.className = 'card-title';
+	cardBody.className = 'card-body';
 	movieDesc.classname = 'card-text';
-	article.className = 'col-3';
+	article.className = 'card';
 
-	return [article, cardBody, movieTitle, moviePoster, movieDesc];
+	return [card, article, cardBody, movieTitle, moviePoster, movieDesc];
 }
 
 const showSearchResults = ({results}) => {
 	
 	results.forEach(({poster_path, title, overview}) => {
 
-		const card = createCard();
-		[article, cardBody, movieTitle, moviePoster, movieDesc] = card;
+		const cardElem = createCard();
+		[card, article, cardBody, movieTitle, moviePoster, movieDesc] = cardElem;
 		
-		setAttributes(moviePoster, {'src': `https://image.tmdb.org/t/p/w300${poster_path}`, 'alt': title});
+		setAttributes(moviePoster, {'src': `https://image.tmdb.org/t/p/w300${poster_path}`, 'alt': title, 'class': 'card-img-top'});
 		movieTitle.innerText = title;
 		movieDesc.innerText = `${overview.substring(0, 150)}...`;
 
-		cardsRow.append(article);
+		cardsRow.append(card);
+		card.append(article);
 		article.append(moviePoster, cardBody);
 		cardBody.append(movieTitle, movieDesc);
 	});
