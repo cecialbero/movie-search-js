@@ -1,129 +1,30 @@
-//selects the DOM elements
-var item = document.querySelector(".movie-thumbnail");
-var title = item.querySelector("h4");
-var category = item.querySelector("h5");
-var plot = item.querySelector("p");
-var image = item.querySelector("img");
-var itemList = document.getElementById("item-list");
-var counterItem = document.getElementById("counter");
+const searchBtn = document.querySelector('#search-movie button');
+const userData = document.querySelector('#search-movie input');
+const cardsRow = document.getElementById('cardsRow');
 
-//Counter
-var counter = 0;
-function Counter(searchItem) {
-	counter = counter + 1;
-	if(counter == 1) {
-		counterItem.innerHTML = "We found " + counter + " result for " + '"' +  searchItem + '"';
-	}
-	else {
-		counterItem.innerHTML = "We found " + counter + " results for " + '"' + searchItem + '"';
+// Helper fn
+const setAttributes = (elem, attrs) => {
+	for(let key in attrs) {
+		elem.setAttribute(key, attrs[key]);
 	}
 }
 
-//Ajax Request
-function AjaxRequest(method, url, callback) {
-	var hrx = new XMLHttpRequest();
-	hrx.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			callback(JSON.parse(this.responseText));
-		}
+userData.addEventListener('keydown', (event) => {
+	if(event.keyCode === 13) {
+		event.preventDefault();
+		getMoviesData(event.target.value);
 	}
-	hrx.open(method, url, true);
-	hrx.send();
-};
+}, false);
 
-//Search by Search by category select
-var links = document.querySelectorAll('.category-link');
-links.forEach(function(link){
-	link.addEventListener('click', function(e){
-			e.preventDefault();
-			AjaxRequest('GET', 'data.json', CategoryRender);
+searchBtn.addEventListener('click', () => {
+	console.log('click')
+}, false);
 
-			function CategoryRender(response){
-				itemList.innerHTML = "";
-				counter = 0;
-				for(var i = 0; i < response.length; i++){
-					var movie = response[i];
-					if(movie.category == link.text.toLowerCase()) {
-						//inserts the information inside the selected elements
-						title.innerHTML = movie.film;
-						category.innerHTML = movie.category.toUpperCase();
-						var moviePlot = movie.plot.substring(0, 100);
-						plot.innerHTML = moviePlot + "...";
-						image.setAttribute("src", movie.image.url);
-						image.setAttribute("alt", movie.image.alt);
-
-						//clones the thumbnail element
-						var cloneItem = item.cloneNode(true);
-						cloneItem.classList.add("show");
-						cloneItem.classList.remove("hide");
-						itemList.appendChild(cloneItem);
-
-						Counter(link.text);
-					}
-				}
-			}
-	});
-});
-
-
-//search by film name on the search box
-var searchBtn = document.querySelector('#search-film button');
-var userData = document.querySelector("#search-film input");
-
-searchBtn.addEventListener('click', function(){
-	AjaxRequest('GET', 'data.json', SearchRender);
-}, true);
-
-function SearchRender(response) {
-
-	itemList.innerHTML = "";
-	counter = 0;
-	counterItem.innerHTML = "There are no results for " + '"' + userData.value + '"';
-	if(userData.value == "") {
-		counterItem.innerHTML = "";
-	}
-
-	//search the movie titles at the json
-	for(var j = 0; j < response.length; j++) {
-		var movie = response[j];
-		var movieTitle = movie.film;
-
-		var regexp = new RegExp(userData.value, "gi");
-		var wordSearch = movieTitle.search(regexp);
-
-		if(wordSearch != -1 && userData.value != false) {
-			//inserts the information inside the selected elements
-			title.innerHTML = movie.film;
-			category.innerHTML = movie.category;
-			plot.innerHTML = movie.plot;
-			image.setAttribute("src", movie.image.url);
-			image.setAttribute("alt", movie.image.alt);
-
-			//clones the thumbnail element
-			var cloneItem = item.cloneNode(true);
-			cloneItem.classList.add("show");
-			cloneItem.classList.remove("hide");
-			itemList = document.getElementById("item-list");
-			itemList.appendChild(cloneItem);
-
-			Counter(userData.value);
-		}
-	}
-};
-
-userData.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-    	e.preventDefault();
-    	AjaxRequest('GET', 'data.json', SearchRender);
-    }
-});
-
-//------------ NEW ---------
-const apiKey = '7dd0c5ac59abd42f68b68f767b9b42f4';
-
-const getMoviesData = async () => {
+const getMoviesData = async (movieTitle) => {
+	const apiKey = '7dd0c5ac59abd42f68b68f767b9b42f4';
+	
 	try {
-		let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=titanic&include_adult=false`);
+		let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieTitle}&include_adult=false`);
 		let movies = await response.json();
 		showSearchResults(movies);
 
@@ -132,8 +33,34 @@ const getMoviesData = async () => {
 	}
 }
 
-const showSearchResults = movies => {
-	console.log(movies)
+const createCard = () => {
+	const article = document.createElement('article');
+	const cardBody = document.createElement('div');
+	const movieTitle = document.createElement('h5');
+	const moviePoster = document.createElement('img');
+	const movieDesc = document.createElement('p');
+
+	movieTitle.className = 'card-title';
+	cardBody.className = 'card-title';
+	movieDesc.classname = 'card-text';
+	article.className = 'col-3';
+
+	return [article, cardBody, movieTitle, moviePoster, movieDesc];
 }
 
-getMoviesData();
+const showSearchResults = ({results}) => {
+	
+	results.forEach(({poster_path, title, overview}) => {
+
+		const card = createCard();
+		[article, cardBody, movieTitle, moviePoster, movieDesc] = card;
+		
+		setAttributes(moviePoster, {'src': `https://image.tmdb.org/t/p/w300${poster_path}`, 'alt': title});
+		movieTitle.innerText = title;
+		movieDesc.innerText = `${overview.substring(0, 150)}...`;
+
+		cardsRow.append(article);
+		article.append(moviePoster, cardBody);
+		cardBody.append(movieTitle, movieDesc);
+	});
+}
