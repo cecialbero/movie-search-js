@@ -60,9 +60,13 @@ const createCard = () => {
 }
 
 const showSearchResults = ({results}) => {
-	
-	results.forEach(({poster_path, title, overview}) => {
+	const movieCards = document.querySelectorAll('#cardsRow .card');
 
+	if(movieCards) {
+		cardsRow.innerHTML = '';
+	}
+
+	results.forEach(({poster_path, title, overview}) => {
 		const cardElem = createCard();
 		[card, article, cardBody, movieTitle, moviePoster, movieDesc] = cardElem;
 		
