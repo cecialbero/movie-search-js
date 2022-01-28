@@ -1,6 +1,8 @@
-const searchBtn = document.querySelector('#search-movie button');
-const userData = document.querySelector('#search-movie input');
+const searchBtn = document.querySelector('#searchMovie button');
+const userData = document.querySelector('#searchMovie input');
 const cardsRow = document.getElementById('cardsRow');
+const alertContainer = document.getElementById('alertContainer');
+const alertBtn = document.querySelector('#alertContainer button');
 
 // Helper fn
 const setAttributes = (elem, attrs) => {
@@ -10,9 +12,16 @@ const setAttributes = (elem, attrs) => {
 }
 
 userData.addEventListener('keydown', (event) => {
-	if(event.keyCode === 13) {
+	let { target, keyCode } = event;
+	if(keyCode === 13) {
 		event.preventDefault();
-		getMoviesData(event.target.value);
+
+		if(target.value == '') {
+			showAlert('<strong>Holy guacamole! </strong>Looks like you need to insert a movie title', 'info');
+		} else {
+			getMoviesData(target.value);
+			target.value = '';
+		}
 	}
 }, false);
 
@@ -67,3 +76,27 @@ const showSearchResults = ({results}) => {
 		cardBody.append(movieTitle, movieDesc);
 	});
 }
+
+
+// --- ALERT ----
+const showAlert = (msg, type) => {
+
+	if(!alertContainer.querySelector('span')) {
+		alertContainer.className = `alert alert-${type} d-block`
+		const text = document.createElement('span');
+		text.innerHTML = msg;
+
+		alertContainer.insertAdjacentElement('afterbegin', text);
+		
+		setTimeout(() => {
+			alertContainer.className = 'alert d-none';
+			alertContainer.removeChild(alertContainer.querySelector('span'));
+		}, 4000);
+	}
+
+}
+
+alertBtn.addEventListener('click', () => {
+	alertContainer.className = 'alert d-none';
+	alertContainer.removeChild(alertContainer.querySelector('span'));
+})
