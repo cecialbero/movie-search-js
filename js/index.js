@@ -3,6 +3,7 @@ const userData = document.querySelector('#searchMovie input');
 const cardsRow = document.getElementById('cardsRow');
 const alertContainer = document.getElementById('alertContainer');
 const alertBtn = document.querySelector('#alertContainer button');
+const searchFeedbackMsg = document.getElementById('searchFeedbackMsg');
 
 // Helper fn
 const setAttributes = (elem, attrs) => {
@@ -36,27 +37,11 @@ const getMoviesData = async (movieTitle) => {
 		let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieTitle}&include_adult=false`);
 		let movies = await response.json();
 		showSearchResults(movies);
+		showSearchMessages(movies, movieTitle);
 
 	} catch(error) {
 		console.log(error);
 	}
-}
-
-const createCard = () => {
-	const card = document.createElement('div');
-	const article = document.createElement('article');
-	const cardBody = document.createElement('div');
-	const movieTitle = document.createElement('h5');
-	const moviePoster = document.createElement('img');
-	const movieDesc = document.createElement('p');
-
-	card.className = 'col-3';
-	movieTitle.className = 'card-title';
-	cardBody.className = 'card-body';
-	movieDesc.classname = 'card-text';
-	article.className = 'card';
-
-	return [card, article, cardBody, movieTitle, moviePoster, movieDesc];
 }
 
 const showSearchResults = ({results}) => {
@@ -79,6 +64,34 @@ const showSearchResults = ({results}) => {
 		article.append(moviePoster, cardBody);
 		cardBody.append(movieTitle, movieDesc);
 	});
+}
+
+const showSearchMessages = ({results}, movieTitle) => {
+	searchFeedbackMsg.innerHTML = "";
+	const searchMsg = document.createElement('h5');
+
+	results.length
+	? searchMsg.innerHTML = `We found ${results.length} movies for <i>"${movieTitle}"</i>`
+	: searchMsg.innerHTML = `Ups, no movies found for <i>"${movieTitle}"</i>`;
+
+	searchFeedbackMsg.appendChild(searchMsg);
+};
+
+const createCard = () => {
+	const card = document.createElement('div');
+	const article = document.createElement('article');
+	const cardBody = document.createElement('div');
+	const movieTitle = document.createElement('h5');
+	const moviePoster = document.createElement('img');
+	const movieDesc = document.createElement('p');
+
+	card.className = 'col-3';
+	movieTitle.className = 'card-title';
+	cardBody.className = 'card-body';
+	movieDesc.classname = 'card-text';
+	article.className = 'card';
+
+	return [card, article, cardBody, movieTitle, moviePoster, movieDesc];
 }
 
 
