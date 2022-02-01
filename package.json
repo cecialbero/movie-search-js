@@ -3,7 +3,20 @@
   "version": "1.0.0",
   "description": "javaScript film search web app",
   "main": "js/index.js",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
   "repository": "https://github.com/cecialbero/filmSearch-Ajax.git",
   "author": "cecialbero <ceci.albero@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.5.3",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.4.0"
+  }
 }
