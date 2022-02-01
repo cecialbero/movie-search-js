@@ -62,8 +62,11 @@ const showSearchResults = ({results}) => {
 	results.forEach(({poster_path, title, overview}) => {
 		const cardElem = createCard();
 		[card, article, cardBody, movieTitle, moviePoster, movieDesc] = cardElem;
-		
-		setAttributes(moviePoster, {'src': `https://image.tmdb.org/t/p/w300${poster_path}`, 'alt': title, 'class': 'card-img-top'});
+
+		console.log(poster_path)
+
+		poster_path ? moviePoster.src = `https://image.tmdb.org/t/p/w300${poster_path}` : moviePoster.src = './images/placeholder-poster.jpg';
+		setAttributes(moviePoster, {'alt': title, 'class': 'card-img-top'});
 		movieTitle.innerText = title;
 		movieDesc.innerText = `${overview.substring(0, 150)}...`;
 
