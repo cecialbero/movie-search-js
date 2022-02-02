@@ -44,9 +44,7 @@ const getMoviesData = async (movieTitle, pageNumber = 1, createPaginator = true)
 		let movies = await response.json();
 		showSearchResults(movies);
 		showSearchMessages(movies, movieTitle);
-
 		if(movies.total_pages > 1 && createPaginator) {showPagination(movies)};
-
 	} catch(error) {
 		console.log(error);
 	}
@@ -62,8 +60,6 @@ const showSearchResults = ({results}) => {
 	results.forEach(({poster_path, title, overview}) => {
 		const cardElem = createCard();
 		[card, article, cardBody, movieTitle, moviePoster, movieDesc] = cardElem;
-
-		console.log(poster_path)
 
 		poster_path ? moviePoster.src = `https://image.tmdb.org/t/p/w300${poster_path}` : moviePoster.src = './images/placeholder-poster.jpg';
 		setAttributes(moviePoster, {'alt': title, 'class': 'card-img-top'});
@@ -95,12 +91,12 @@ const createCard = () => {
 }
 
 // --- FEEDBACK MESSAGE
-const showSearchMessages = ({results}, movieTitle) => {
+const showSearchMessages = ({total_results}, movieTitle) => {
 	searchFeedbackMsg.innerHTML = "";
 	const searchMsg = document.createElement('h5');
 
-	results.length
-	? searchMsg.innerHTML = `We found ${results.length} movies for <i>"${movieTitle}"</i>`
+	total_results > 0
+	? searchMsg.innerHTML = `We found ${total_results} movies for <i>"${movieTitle}"</i>`
 	: searchMsg.innerHTML = `Ups, no movies found for <i>"${movieTitle}"</i>`;
 
 	searchFeedbackMsg.appendChild(searchMsg);
@@ -110,6 +106,12 @@ const showSearchMessages = ({results}, movieTitle) => {
 const showPagination = ({total_pages}) => {
 	// nextLink.classList.remove('invisible');
 	// previousLink.classList.remove('invisible');
+	const pageItemNumber = document.querySelectorAll('.page-item-number');
+
+	// WIP: Remove pagination if visible from previous search in a new search without results
+	if(pageItemNumber) {
+		pageItemNumber.forEach(item => item.remove())
+	}
 
 	for(let i = 0; i < total_pages; i++) {
 		const paginationBtn = document.createElement('li');
